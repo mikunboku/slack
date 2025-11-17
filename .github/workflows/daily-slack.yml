@@ -1,9 +1,9 @@
 name: Daily Reminder Notification
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"   # UTC 0時 → 日本時間 9時
-  workflow_dispatch:      # 手動実行も可能
+    - cron: "0 0 * * *"
 
 jobs:
   notify:
@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Call sendDailyReminder function
         run: |
-          curl -X POST https://your-base44-app-url.base44.com/functions/sendDailyReminder
+          curl -X POST "https://task-flow-81b9bb5f.base44.app/functions/sendDailyReminder"
