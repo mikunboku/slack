@@ -1,21 +1,15 @@
-name: Daily Slack Notification
+name: Daily Reminder Notification
 
 on:
   schedule:
     - cron: "0 0 * * *"   # UTC 0時 → 日本時間 9時
-  workflow_dispatch:      # ← これを追加！
+  workflow_dispatch:      # 手動実行も可能
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send Slack message
+      - name: Call sendDailyReminder function
         run: |
-          curl -X POST -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-               -H "Content-Type: application/json" \
-               --data "{\"channel\":\"${SLACK_CHANNEL_ID}\", \"text\":\"毎朝9時のSlack通知です☀️\"}" \
-               https://slack.com/api/chat.postMessage
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          curl -X POST https://your-base44-app-url.base44.com/functions/sendDailyReminder
