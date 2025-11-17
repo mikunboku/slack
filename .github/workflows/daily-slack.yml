@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Call sendDailyReminder function
         run: |
-          curl -X POST https://your-base44-app-url.base44.com/functions/sendDailyReminder
+          curl -X POST https://task-flow-81b9bb5f.base44.app/functions/sendDailyReminder
