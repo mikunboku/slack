@@ -1,0 +1,20 @@
+name: Daily Slack Notification
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # UTC 0時 → 日本時間 9時
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack message
+        run: |
+          curl -X POST -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+               -H "Content-Type: application/json" \
+               --data "{\"channel\":\"${SLACK_CHANNEL_ID}\", \"text\":\"毎朝9時のSlack通知です☀️\"}" \
+               https://slack.com/api/chat.postMessage
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
