@@ -1,15 +1,15 @@
-name: Daily Reminder Notification
+#name: Daily Reminder Notification
 
-on:
-  schedule:
-    - cron: "0 0 * * *"   # UTC 0時 → 日本時間 9時
-  workflow_dispatch:      # 手動実行も可能
-
-jobs:
-  notify:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Call sendDailyReminder function
-        run: |
-          curl -X POST https://task-flow-81b9bb5f.base44.app/functions/sendDailyReminder
+#on:
+#  schedule:
+#    - cron: "0 0 * * *"   # UTC 0時 → 日本時間 9時
+#  workflow_dispatch:      # 手動実行も可能
+#
+#jobs:
+#  notify:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Call sendDailyReminder function
+#        run: |
+#          curl -X POST https://task-flow-81b9bb5f.base44.app/functions/sendDailyReminder
